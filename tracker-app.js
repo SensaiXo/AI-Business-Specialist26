@@ -190,6 +190,135 @@ class AITrackerApp {
                         ]
                     }
                 },
+                {
+                    id: 8,
+                    title: 'MASTER PM FRAMEWORK - Institutionelles & Funktionelles PM',
+                    description: 'COMPLETE PROJECT MANAGEMENT SYSTEM - Once you learn this, you can do ALL of PM!',
+                    category: 'day1',
+                    status: 'completed',
+                    dateAdded: '2025-10-22',
+                    priority: 'Hochpriorität',
+                    details: {
+                        institutionalPM: {
+                            title: 'Institutionelles PM (Organizational Structure)',
+                            roles: [
+                                'Antragsteller (Applicant)',
+                                'Rahmenprojektorganisation (Framework Project Organization)',
+                                'Leitung Betriebstechnik (Operations Technology Management)',
+                                'Leitung Forschung & Entwicklung (R&D Management)',
+                                'Leitung IT/Organisation (IT/Organization Management)',
+                                'Auftraggeber (Client/Customer)',
+                                'Vorstand (Geschäftsleitung) - Board of Directors',
+                                'Projektservicestelle (Project Office)',
+                                'Sponsor',
+                                'Bewilligungsgremium (Decision Committee)',
+                                'Funktionale Beteiligte (Functional Stakeholders)',
+                                'Fachbereiche (Departments)',
+                                'Einzelprojektorganisation (Individual Project Organization)',
+                                'Projekt-Controlling (Project Controlling)',
+                                'Informations-Management (Information Management)',
+                                'Lenkungsausschuss (Steering Committee)',
+                                'Review-Team',
+                                'Projektleiter (Project Manager)',
+                                'Beratungs-Gremium (Advisory Board)',
+                                'Kernteam (Core Team)',
+                                'Änderungs-/Konfigmanagement (Change/Configuration Management)'
+                            ],
+                            functionalStakeholders: [
+                                'Fachbeauftragte (Umwelt/Qualität/Sicherheit/Datenschutz)',
+                                'Mitarbeitervorbereitung (Employee Preparation)',
+                                'Revision (Audit)',
+                                'Beschaffung (Procurement)',
+                                'Controlling',
+                                'Personal (HR)'
+                            ],
+                            departments: [
+                                'Fachbereichsleitung (Department Head)',
+                                'Benutzervertretung (User Representation)',
+                                'Fachbereichskoordination (Department Coordination)',
+                                'Betroffene Mitarbeiter (Affected Employees)'
+                            ]
+                        },
+                        functionalPM: {
+                            title: 'Funktionelles PM (Process Lifecycle)',
+                            phases: [
+                                {
+                                    name: 'Projektstart (Project Start)',
+                                    activities: [
+                                        'Kick-off Meeting',
+                                        '1st Projektmeeting (1st Project Meeting)'
+                                    ]
+                                },
+                                {
+                                    name: 'Planungsphase (Planning Phase)',
+                                    activities: [
+                                        'Methode festlegen (z.B. Phasenmodell)',
+                                        'Planungstiefe festlegen (Define Planning Depth)',
+                                        'Projektstrukturplan (Project Structure Plan)',
+                                        'Ablauf / Terminplan (Process / Schedule Plan)',
+                                        'Einsatzmittelplanung (Resource Planning)',
+                                        'Kosten / Finanzmittelplanung (Cost / Financial Planning)',
+                                        'Vergabe der Arbeitspakete (Assignment of Work Packages)'
+                                    ],
+                                    pspStructure: [
+                                        '1. Projekt (Project)',
+                                        '2. Teilprojekte (Sub-projects)',
+                                        '3. Teilaufgaben (Sub-tasks)',
+                                        '4. Arbeitspakete (Work Packages)',
+                                        '5. PSP Codes vergeben (Assign PSP Codes)'
+                                    ],
+                                    planningMethods: [
+                                        '1. Top Down',
+                                        '2. Bottom Up',
+                                        '3. Abschl. prüfen (Check completion)',
+                                        '4. Arbeitspakete (Work Packages)'
+                                    ],
+                                    scheduleProcess: [
+                                        '1. Arbeitspakete detaillieren (Detail work packages)',
+                                        '2. Abläufe festlegen (Define processes)',
+                                        '3. Ablaufplan in Terminplan überführen (Transfer process plan to schedule)',
+                                        '4. Ablauf- und Terminplan abstimmen (Coordinate process and schedule plan)',
+                                        '5. Ausführungsplan verabschieden (Approve execution plan)'
+                                    ]
+                                },
+                                {
+                                    name: 'Projektsteuerung (Project Control)',
+                                    activities: [
+                                        'Welche Kostenarten kennen wir? (What types of costs do we know?)',
+                                        'Planungs-Kontrollprozess (Planning-Control Process)',
+                                        'Balkenplan für die Vorstudie (Gantt Chart for Preliminary Study)'
+                                    ],
+                                    controlProcess: [
+                                        '1. Richtig erfasst? (Correctly recorded?)',
+                                        '2. Richtig weitergeleitet? (Correctly forwarded?)',
+                                        '3. Soll-/Ist-Vergleich (Target/Actual Comparison)',
+                                        '4. Abweichungsanalyse (Variance Analysis)'
+                                    ],
+                                    note: 'Vorzugsweise eine Verknüpfung herstellen für die IST-Erfassung mit der Zeiterfassung (Preferably establish a link for actual recording with time tracking)'
+                                },
+                                {
+                                    name: 'Projektabschluss / Phasenabschluss (Project Closure / Phase Closure)',
+                                    activities: [
+                                        'Abschlussbesprechung (intern Projektteam) - Final Meeting (internal Project Team)',
+                                        'Abschlussbericht (Final Report)',
+                                        'Erhaltungsplan (Maintenance Plan)',
+                                        'Antrag auf Abnahme (Request for Acceptance)',
+                                        'Abschlussbesprechung (extern Auftraggeber) - Final Meeting (external Client)',
+                                        'Formale Übergabe (Formal Handover)'
+                                    ]
+                                }
+                            ]
+                        },
+                        keyInsights: [
+                            'This is the MASTER PM framework - learn this and you can do ALL of PM!',
+                            'Combines organizational structure (WHO) with process lifecycle (HOW)',
+                            'Complete institutional embedding with functional process flow',
+                            'Covers all stakeholders from Board to individual employees',
+                            'Full lifecycle from initiation to formal handover',
+                            'Includes planning, control, and closure methodologies'
+                        ]
+                    }
+                },
                 // Open Tasks from Day 1
                 {
                     id: 7,
@@ -318,11 +447,11 @@ class AITrackerApp {
             notes: [
                 {
                     id: 1,
-                    title: 'Tag 1 - Projektmanagement Antrag Prozess',
-                    content: 'Gelernt: Template-basierter Antrag-Workflow mit 8 Schritten von Idee bis Bewilligung. Wichtig: Project Office liefert Templates, formelle Prüfung, Sponsor/Auftraggeber-Suche, Bewilligungsgremium entscheidet. Bei grossen Projekten zusätzlich Vorstand.',
+                    title: 'Tag 1 - MASTER PM FRAMEWORK - Das komplette System!',
+                    content: 'GELERNT: Das MASTER Projektmanagement Framework! Institutionelles PM (WHO - alle Rollen von Vorstand bis Mitarbeiter) + Funktionelles PM (HOW - komplette Prozess-Lebenszyklus). Dies ist das UMFASSENDE System - wer das lernt, kann ALLES in PM! Vollständige Organisationsstruktur mit allen Stakeholdern + komplette Prozessphasen von Projektstart bis formale Übergabe. Inklusive PSP, Terminplanung, Controlling, Abschluss. Das ist der GOLDSCHATZ des PM!',
                     category: 'learning',
                     date: '2025-10-22',
-                    tags: ['Projektmanagement', 'Antrag', 'Template', 'Workflow']
+                    tags: ['MASTER-PM', 'Institutionelles-PM', 'Funktionelles-PM', 'Komplettes-System', 'GOLDSCHATZ']
                 }
             ],
             overallProgress: 25
