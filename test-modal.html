@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal Test - AI Business Specialist</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f5f5f5;
+        }
+        
+        .test-button {
+            background: #3498db;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+        }
+        
+        .test-button:hover {
+            background: #2980b9;
+        }
+        
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .modal.hidden {
+            display: none !important;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #999;
+        }
+        
+        .close-btn:hover {
+            color: #333;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        
+        .form-textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        
+        .btn-primary {
+            background: #3498db;
+            color: white;
+        }
+        
+        .btn-warning {
+            background: #f39c12;
+            color: white;
+        }
+        
+        .status {
+            margin: 20px 0;
+            padding: 15px;
+            background: #e8f5e8;
+            border-radius: 5px;
+            border-left: 4px solid #27ae60;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Modal Test - AI Business Specialist</h1>
+    
+    <div class="status">
+        <strong>✅ Test Status:</strong> Modal should be HIDDEN by default. Click button to test opening/closing.
+    </div>
+    
+    <button class="test-button" onclick="openModal('note')">Test: Notiz erstellen</button>
+    <button class="test-button" onclick="checkModalStatus()">Check: Modal Status</button>
+    <button class="test-button" onclick="forceHideModal()">Force: Hide Modal</button>
+    
+    <div id="statusOutput" style="margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 5px;"></div>
+    
+    <!-- Note Modal -->
+    <div id="noteModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Notiz erstellen</h3>
+                <button class="close-btn" onclick="closeModal('noteModal')">&times;</button>
+            </div>
+            <form id="noteForm">
+                <div class="form-group">
+                    <label class="form-label">Titel:</label>
+                    <input type="text" class="form-input" id="noteTitle" placeholder="Notiz Titel">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Inhalt:</label>
+                    <textarea class="form-textarea" id="noteContent" placeholder="Notiz Inhalt"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Kategorie:</label>
+                    <select class="form-input" id="noteCategory">
+                        <option value="learning">Lernnotizen</option>
+                        <option value="project">Projekt</option>
+                        <option value="general">Allgemein</option>
+                    </select>
+                </div>
+                <div style="text-align: right;">
+                    <button type="button" class="btn btn-warning" onclick="closeModal('noteModal')">Abbrechen</button>
+                    <button type="button" class="btn btn-primary" onclick="saveNote()">Speichern</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Modal functions
+        function openModal(modalType) {
+            const modalId = modalType + 'Modal';
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('hidden');
+                modal.style.display = 'flex';
+                updateStatus('Modal opened: ' + modalId);
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('hidden');
+                modal.style.display = 'none';
+                updateStatus('Modal closed: ' + modalId);
+            }
+        }
+
+        function saveNote() {
+            const title = document.getElementById('noteTitle').value;
+            const content = document.getElementById('noteContent').value;
+            const category = document.getElementById('noteCategory').value;
+            
+            if (title && content) {
+                alert('Notiz gespeichert: ' + title);
+                document.getElementById('noteForm').reset();
+                closeModal('noteModal');
+            } else {
+                alert('Bitte füllen Sie alle Felder aus!');
+            }
+        }
+
+        function checkModalStatus() {
+            const modal = document.getElementById('noteModal');
+            const isHidden = modal.classList.contains('hidden');
+            const displayStyle = modal.style.display;
+            
+            updateStatus(`Modal Status: hidden=${isHidden}, display=${displayStyle}`);
+        }
+
+        function forceHideModal() {
+            const modal = document.getElementById('noteModal');
+            modal.classList.add('hidden');
+            modal.style.display = 'none';
+            updateStatus('Modal force hidden');
+        }
+
+        function updateStatus(message) {
+            const output = document.getElementById('statusOutput');
+            const timestamp = new Date().toLocaleTimeString();
+            output.innerHTML = `[${timestamp}] ${message}`;
+        }
+
+        // Ensure modal is hidden on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('noteModal');
+            modal.classList.add('hidden');
+            modal.style.display = 'none';
+            updateStatus('Page loaded - Modal should be hidden');
+            
+            // Double check after a delay
+            setTimeout(() => {
+                if (!modal.classList.contains('hidden')) {
+                    modal.classList.add('hidden');
+                    modal.style.display = 'none';
+                    updateStatus('Auto-fixed: Modal was visible, now hidden');
+                }
+            }, 100);
+        });
+
+        // Close modal on outside click
+        document.getElementById('noteModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal('noteModal');
+            }
+        });
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const modal = document.getElementById('noteModal');
+                if (!modal.classList.contains('hidden')) {
+                    closeModal('noteModal');
+                }
+            }
+        });
+    </script>
+</body>
+</html>

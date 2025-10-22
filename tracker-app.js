@@ -640,8 +640,21 @@ class AITrackerApp {
             const modal = document.getElementById(modalId);
             if (modal) {
                 modal.classList.add('hidden');
+                // Force hide with inline style as backup
+                modal.style.display = 'none';
             }
         });
+        
+        // Additional check after a short delay
+        setTimeout(() => {
+            modals.forEach(modalId => {
+                const modal = document.getElementById(modalId);
+                if (modal && !modal.classList.contains('hidden')) {
+                    modal.classList.add('hidden');
+                    modal.style.display = 'none';
+                }
+            });
+        }, 100);
     }
 
     // Render phases
