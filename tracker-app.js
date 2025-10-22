@@ -434,6 +434,48 @@ class AITrackerApp {
                         ]
                     }
                 },
+                {
+                    id: 11,
+                    title: 'Samstag - Vor Ort Unterricht',
+                    description: 'WICHTIG: Samstag ist kein Online-Unterricht, sondern VOR ORT Präsenzunterricht',
+                    category: 'day1',
+                    status: 'completed',
+                    dateAdded: '2025-10-22',
+                    priority: 'Hochpriorität',
+                    details: {
+                        schedule: {
+                            day: 'Samstag',
+                            type: 'Vor Ort (Präsenzunterricht)',
+                            location: 'TBD - Check course details',
+                            format: 'Face-to-face learning',
+                            preparation: 'Bring all materials, laptop, notes'
+                        },
+                        preparation: [
+                            'Check exact location and time',
+                            'Prepare all Day 1 materials',
+                            'Bring laptop for digital work',
+                            'Print important documents if needed',
+                            'Prepare questions for instructor',
+                            'Review PM Framework before class'
+                        ],
+                        benefits: [
+                            'Direct interaction with instructor',
+                            'Hands-on learning experience',
+                            'Network with other students',
+                            'Immediate feedback and clarification',
+                            'Group work and collaboration',
+                            'Real-time problem solving'
+                        ],
+                        considerations: [
+                            'Plan travel time to location',
+                            'Ensure all materials are ready',
+                            'Prepare for interactive learning',
+                            'Bring backup power for laptop',
+                            'Have questions ready for discussion',
+                            'Network with fellow students'
+                        ]
+                    }
+                },
                 // Open Tasks from Day 1
                 {
                     id: 7,
@@ -562,11 +604,11 @@ class AITrackerApp {
             notes: [
                 {
                     id: 1,
-                    title: 'Tag 1 - MASTER PM FRAMEWORK - Das komplette System!',
-                    content: 'GELERNT: Das MASTER Projektmanagement Framework! Institutionelles PM (WHO - alle Rollen von Vorstand bis Mitarbeiter) + Funktionelles PM (HOW - komplette Prozess-Lebenszyklus). Dies ist das UMFASSENDE System - wer das lernt, kann ALLES in PM! Vollständige Organisationsstruktur mit allen Stakeholdern + komplette Prozessphasen von Projektstart bis formale Übergabe. Inklusive PSP, Terminplanung, Controlling, Abschluss. Das ist der GOLDSCHATZ des PM!',
+                    title: 'Tag 1 - MASTER PM FRAMEWORK + Samstag Vor Ort',
+                    content: 'GELERNT: Das MASTER Projektmanagement Framework! Institutionelles PM (WHO - alle Rollen von Vorstand bis Mitarbeiter) + Funktionelles PM (HOW - komplette Prozess-Lebenszyklus). Dies ist das UMFASSENDE System - wer das lernt, kann ALLES in PM! WICHTIG: Samstag ist VOR ORT Präsenzunterricht (nicht online) - direkte Interaktion mit Instructor, Hands-on Learning, Networking mit anderen Studenten. Vollständige Organisationsstruktur mit allen Stakeholdern + komplette Prozessphasen von Projektstart bis formale Übergabe. Das ist der GOLDSCHATZ des PM!',
                     category: 'learning',
                     date: '2025-10-22',
-                    tags: ['MASTER-PM', 'Institutionelles-PM', 'Funktionelles-PM', 'Komplettes-System', 'GOLDSCHATZ']
+                    tags: ['MASTER-PM', 'Institutionelles-PM', 'Funktionelles-PM', 'Samstag-Vor-Ort', 'Präsenzunterricht', 'GOLDSCHATZ']
                 }
             ],
             overallProgress: 25
