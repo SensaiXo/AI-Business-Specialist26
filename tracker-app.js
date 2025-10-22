@@ -153,6 +153,43 @@ class AITrackerApp {
                     status: 'completed',
                     dateAdded: '2025-10-22'
                 },
+                {
+                    id: 7,
+                    title: 'Projektmanagement - Antrag Prozess',
+                    description: 'Template-basierter Antrag-Workflow: Idee → Template → Antrag → Prüfung → Sponsor/Auftraggeber → Bewilligung',
+                    category: 'day1',
+                    status: 'completed',
+                    dateAdded: '2025-10-22',
+                    details: {
+                        process: [
+                            '1. Template beschaffen für Antrag',
+                            '2. Liefert Template (Project Office)',
+                            '3. Reicht Antrag ein',
+                            '4. Formelle Prüfung des Antrags',
+                            '5. Suchen Sponsor & Auftraggeber',
+                            '6. Bewilligungsgremium',
+                            '7. Vorstand (bei grossen Projekten)',
+                            '8. Entscheiden'
+                        ],
+                        keyElements: [
+                            'Antragsteller (Applicant)',
+                            'Project Office (Template Provider)',
+                            'Sponsor (Funding)',
+                            'Auftraggeber (Client/Customer)',
+                            'Bewilligungsgremium (Approval Committee)',
+                            'Vorstand (Board for large projects)'
+                        ],
+                        templateStructure: [
+                            'Projektbeschreibung',
+                            'Ziele & Nutzen',
+                            'Ressourcenbedarf',
+                            'Zeitplan',
+                            'Kosten',
+                            'Sponsor/Auftraggeber',
+                            'Risikobewertung'
+                        ]
+                    }
+                },
                 // Open Tasks from Day 1
                 {
                     id: 7,
@@ -278,7 +315,16 @@ class AITrackerApp {
                     category: 'exam'
                 }
             ],
-            notes: [],
+            notes: [
+                {
+                    id: 1,
+                    title: 'Tag 1 - Projektmanagement Antrag Prozess',
+                    content: 'Gelernt: Template-basierter Antrag-Workflow mit 8 Schritten von Idee bis Bewilligung. Wichtig: Project Office liefert Templates, formelle Prüfung, Sponsor/Auftraggeber-Suche, Bewilligungsgremium entscheidet. Bei grossen Projekten zusätzlich Vorstand.',
+                    category: 'learning',
+                    date: '2025-10-22',
+                    tags: ['Projektmanagement', 'Antrag', 'Template', 'Workflow']
+                }
+            ],
             overallProgress: 25
         };
 
