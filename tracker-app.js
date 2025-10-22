@@ -630,6 +630,18 @@ class AITrackerApp {
         this.renderDocuments();
         this.updateOverallProgress();
         this.setupEventListeners();
+        this.ensureModalsHidden();
+    }
+
+    // Ensure all modals are hidden on page load
+    ensureModalsHidden() {
+        const modals = ['progressModal', 'documentModal', 'noteModal'];
+        modals.forEach(modalId => {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('hidden');
+            }
+        });
     }
 
     // Render phases
@@ -886,11 +898,24 @@ class AITrackerApp {
     // Modal functions
     openModal(modalType) {
         const modalId = modalType + 'Modal';
-        document.getElementById(modalId).classList.remove('hidden');
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            modal.classList.remove('hidden');
+        }
     }
 
     closeModal(modalId) {
-        document.getElementById(modalId).classList.add('hidden');
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            modal.classList.add('hidden');
+        }
+    }
+
+    // Close modal when clicking outside
+    closeModalOnOutsideClick(event, modalId) {
+        if (event.target.classList.contains('modal')) {
+            this.closeModal(modalId);
+        }
     }
 
     // Export data
