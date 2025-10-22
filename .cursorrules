@@ -1,0 +1,192 @@
+# AI Business Specialist Tracker - Cursor AI Project Manager
+**Intelligent, self-learning project management system with auto-deploy and visual schemas**
+
+## PROJECT IDENTITY
+Name: AI Business Specialist Tracker
+Purpose: Personal course tracking app with friend collaboration
+Language: German (UI), English (code comments)
+Deployment: GitHub Pages at sensaixo.github.io/AI-Business-Specialist26
+Repository: https://github.com/SensaiXo/AI-Business-Specialist26
+
+## TECH STACK
+- Vanilla JavaScript (ES6+)
+- HTML5 + CSS3
+- LocalStorage for data persistence
+- GitHub Actions for auto-deployment
+- SVG for doodle-style diagrams
+- No frameworks, no backend, no database
+
+## CURRENT PROJECT STATUS
+Phase: Day 1 Complete - Project Started
+Completed Features:
+- index.html (main app with German UI)
+- tracker-app.js (core functionality)
+- README.md (comprehensive documentation)
+- Prüfungsordnung integration (official exam regulations)
+- Day 1 content implementation
+- GitHub repository setup
+
+In Progress:
+- GitHub Pages deployment (needs activation)
+- Cursor PM system implementation
+- Auto-deploy functionality
+- Friend sharing features
+
+Planned Features:
+- Lesson snapshots system
+- Auto-push for lesson updates
+- Doodle-style visual schemas
+- Friend explorer interface
+- Export/import system (Markdown/PDF)
+
+## AUTO-DEPLOY CONFIGURATION
+Trigger: When lesson is marked "complete"
+Action: Auto-commit lesson JSON to lessons/ directory
+Push: Automatic via GitHub API or Actions
+Update: Friends see changes within 1-2 minutes
+
+## VISUAL SCHEMA STYLE
+Style: Minimalist doodle/hand-drawn line art
+Format: SVG with hand-drawn paths
+Colors: Monochrome with accent colors
+Use: Project structure, data flow, architecture
+
+## CODE PATTERNS & STANDARDS
+- German UI text, English code comments
+- Modular component structure
+- Safe LocalStorage wrapper with fallback
+- Event delegation for performance
+- Mobile-first responsive design
+- Error handling with user-friendly German messages
+
+## LEARNING PROTOCOL
+Cursor analyzes:
+- Git commit messages for feature additions
+- New/modified files and their purposes
+- User feedback patterns and preferences
+- Feature usage statistics
+- Error patterns and solutions
+
+Auto-updates this file with insights and project evolution.
+
+## COMMAND DEFINITIONS
+
+### /project
+Shows current project status with visual progress and suggests next actions.
+Output includes:
+- Current phase and completion percentage
+- Recent changes (last 3 commits)
+- Active features status
+- Next suggested actions with priorities
+- Visual doodle schema of project structure
+
+### /status
+Detailed status report with:
+- Feature completion matrix
+- Technical debt assessment
+- Performance metrics
+- Security status
+- Deployment status
+
+### /deploy
+Runs deployment checklist:
+- GitHub Pages activation check
+- File validation
+- Auto-deploy system test
+- Friend access verification
+- Performance optimization
+
+### /feature [name]
+Step-by-step feature addition workflow:
+- Requirements analysis
+- Implementation plan
+- Code structure design
+- Testing checklist
+- Documentation update
+
+### /security
+Triggers comprehensive architecture review using PROMPTS.md
+Analyzes:
+- Data stability & error handling
+- Code architecture & structure
+- User experience & error communication
+- Performance & optimization
+- Security & privacy
+- Maintainability & documentation
+- Accessibility (WCAG 2.1 AA)
+- Deployment & CI/CD
+
+### /lesson [day]
+Creates lesson snapshot and auto-deploys:
+- Captures current lesson state
+- Generates shareable summary
+- Auto-commits to lessons/ directory
+- Triggers GitHub Pages rebuild
+- Notifies friends of new content
+
+### /schema [type]
+Generates doodle-style visual schemas:
+- project-structure: File/folder tree
+- data-flow: Data flow diagram
+- deployment-pipeline: Auto-deploy flow
+- friend-access: Collaboration diagram
+- learning-journey: Course progression timeline
+
+## WORKFLOW INTEGRATION
+- All commands reference PROJECT_BRIEF.md for context
+- Workflows stored in .cursor/workflows/
+- Knowledge base in .cursor/project-knowledge.json
+- Auto-learning updates project state
+- Visual schemas embedded in documentation
+
+## ERROR HANDLING
+- Safe LocalStorage with MemoryStorage fallback
+- User-friendly German error messages
+- Graceful degradation for missing features
+- Data validation and corruption recovery
+- Export/import with validation
+
+## FRIEND COLLABORATION
+- Lesson snapshots auto-deployed to GitHub
+- Friend explorer at /explore.html
+- Export system (Markdown/PDF)
+- Real-time updates via GitHub Pages
+- Privacy: You control what's shared
+
+## SUCCESS METRICS
+- Zero critical bugs or data loss
+- Friends see updates within 1-2 minutes
+- Visual schemas clearly show project structure
+- Auto-learning improves over time
+- Production-ready for daily use
+
+## CONSTRAINTS
+- No frameworks (Vanilla JS only)
+- LocalStorage as primary storage
+- German UI, English code
+- Mobile-first responsive design
+- No external dependencies
+- Privacy-first approach
+
+## QUICK REFERENCE
+- Main app: index.html
+- Core logic: tracker-app.js
+- Documentation: README.md
+- Prompts: PROMPTS.md
+- Project brief: PROJECT_BRIEF.md
+- Tech architecture: TECHNICAL_ARCHITECTURE.md
+- Friend explorer: explore.html
+- Schema viewer: schemas.html
+
+## LEARNING LOG
+- Day 1: Project started, basic tracker implemented
+- Architecture review: PROMPTS.md created
+- Auto-deploy: GitHub Actions workflow planned
+- Friend sharing: Export system designed
+- Visual schemas: Doodle-style diagrams planned
+
+---
+
+*This .cursorrules file is automatically updated based on project evolution and user interactions.*
+*Last updated: 2025-10-22*
+*Version: 1.0*

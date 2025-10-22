@@ -1,0 +1,98 @@
+name: Auto-Deploy Lessons
+
+on:
+  push:
+    paths:
+      - 'lessons/**'
+      - 'js/auto-push.js'
+  workflow_dispatch:
+  schedule:
+    # Check for new lessons every 30 minutes
+    - cron: '*/30 * * * *'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      
+      - name: Update lesson index
+        run: |
+          echo "Updating lesson index..."
+          # This would run the update script if it existed
+          # node .cursor/update-lesson-index.js
+      
+      - name: Validate lesson files
+        run: |
+          echo "Validating lesson files..."
+          if [ -d "lessons" ]; then
+            for file in lessons/*.json; do
+              if [ -f "$file" ]; then
+                echo "Validating $file"
+                # Basic JSON validation
+                python3 -m json.tool "$file" > /dev/null
+                if [ $? -eq 0 ]; then
+                  echo "✅ $file is valid JSON"
+                else
+                  echo "❌ $file has invalid JSON"
+                  exit 1
+                fi
+              fi
+            done
+          else
+            echo "No lessons directory found"
+          fi
+      
+      - name: Commit lesson changes
+        run: |
+          git config user.name "AI Tracker Bot"
+          git config user.email "bot@tracker.ai"
+          
+          # Check if there are changes to commit
+          if git diff --quiet; then
+            echo "No changes to commit"
+          else
+            git add lessons/
+            git commit -m "Auto-update: New lesson content $(date '+%Y-%m-%d %H:%M:%S')" || echo "No changes to commit"
+            git push origin main
+          fi
+      
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
+          exclude_assets: |
+            .github/
+            .cursor/
+            lessons/
+            *.md
+            *.yml
+      
+      - name: Verify deployment
+        run: |
+          echo "Deployment completed"
+          echo "App should be available at: https://sensaixo.github.io/AI-Business-Specialist26/"
+          echo "Friend explorer at: https://sensaixo.github.io/AI-Business-Specialist26/explore.html"
+      
+      - name: Notify on success
+        if: success()
+        run: |
+          echo "✅ Auto-deploy successful"
+          echo "📚 New lesson content is now live"
+          echo "👥 Friends can access updates at the explorer URL"
+      
+      - name: Notify on failure
+        if: failure()
+        run: |
+          echo "❌ Auto-deploy failed"
+          echo "Please check the logs for details"

@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Business Specialist - Freund Explorer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .timeline {
+            position: relative;
+            margin: 40px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #3498db, #e74c3c);
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .lesson-card {
+            position: relative;
+            margin: 30px 0;
+            width: 45%;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .lesson-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .lesson-card:nth-child(odd) {
+            left: 0;
+        }
+
+        .lesson-card:nth-child(even) {
+            left: 55%;
+        }
+
+        .lesson-card::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 20px;
+            height: 20px;
+            background: #3498db;
+            border-radius: 50%;
+            transform: translateY(-50%);
+            z-index: 2;
+        }
+
+        .lesson-card:nth-child(odd)::before {
+            right: -10px;
+        }
+
+        .lesson-card:nth-child(even)::before {
+            left: -10px;
+        }
+
+        .lesson-header {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 20px;
+            position: relative;
+        }
+
+        .lesson-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .lesson-date {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        .lesson-duration {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        .lesson-content {
+            padding: 20px;
+        }
+
+        .topics {
+            margin-bottom: 15px;
+        }
+
+        .topics h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .topic-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .topic-tag {
+            background: #ecf0f1;
+            color: #2c3e50;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .notes {
+            margin-bottom: 15px;
+        }
+
+        .notes h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .notes-content {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            font-style: italic;
+        }
+
+        .links {
+            margin-bottom: 15px;
+        }
+
+        .links h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .link-list {
+            list-style: none;
+        }
+
+        .link-item {
+            margin-bottom: 8px;
+        }
+
+        .link-item a {
+            color: #3498db;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            transition: background 0.3s ease;
+        }
+
+        .link-item a:hover {
+            background: #e9ecef;
+        }
+
+        .link-item a::before {
+            content: '🔗';
+            margin-right: 8px;
+        }
+
+        .progress-bar {
+            margin-top: 15px;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+
+        .progress-fill {
+            height: 8px;
+            background: linear-gradient(90deg, #3498db, #2ecc71);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .insights {
+            margin-top: 15px;
+            padding: 15px;
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            color: white;
+            border-radius: 8px;
+        }
+
+        .insights h4 {
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .insight-list {
+            list-style: none;
+        }
+
+        .insight-item {
+            margin-bottom: 5px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .insight-item::before {
+            content: '💡';
+            position: absolute;
+            left: 0;
+        }
+
+        .new-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #e74c3c;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: white;
+        }
+
+        .loading::after {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+            margin-left: 10px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .error {
+            text-align: center;
+            padding: 40px;
+            color: #e74c3c;
+            background: white;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .refresh-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+            margin: 20px auto;
+            display: block;
+        }
+
+        .refresh-btn:hover {
+            background: #2980b9;
+        }
+
+        @media (max-width: 768px) {
+            .lesson-card {
+                width: 90%;
+                left: 5% !important;
+            }
+
+            .lesson-card::before {
+                display: none;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎓 AI Business Specialist Journey</h1>
+            <p>Folge dem Lernfortschritt und entdecke neue Erkenntnisse</p>
+        </div>
+
+        <div id="loading" class="loading">
+            Lade Lektionen...
+        </div>
+
+        <div id="error" class="error" style="display: none;">
+            <h3>Fehler beim Laden</h3>
+            <p>Die Lektionen konnten nicht geladen werden. Bitte versuche es später erneut.</p>
+            <button class="refresh-btn" onclick="loadLessons()">Erneut versuchen</button>
+        </div>
+
+        <div id="timeline" class="timeline" style="display: none;">
+            <!-- Lessons will be loaded here -->
+        </div>
+    </div>
+
+    <script>
+        class FriendExplorer {
+            constructor() {
+                this.lessons = [];
+                this.loadLessons();
+            }
+
+            async loadLessons() {
+                try {
+                    // In a real implementation, this would fetch from GitHub
+                    // For now, we'll use localStorage as a simulation
+                    const lessons = JSON.parse(localStorage.getItem('lessons') || '{}');
+                    const index = JSON.parse(localStorage.getItem('lessonIndex') || '[]');
+                    
+                    this.lessons = index.sort((a, b) => new Date(a.date) - new Date(b.date));
+                    
+                    if (this.lessons.length === 0) {
+                        this.showError('Noch keine Lektionen verfügbar');
+                        return;
+                    }
+                    
+                    this.renderLessons();
+                    
+                } catch (error) {
+                    console.error('Error loading lessons:', error);
+                    this.showError('Fehler beim Laden der Lektionen');
+                }
+            }
+
+            renderLessons() {
+                const timeline = document.getElementById('timeline');
+                const loading = document.getElementById('loading');
+                
+                loading.style.display = 'none';
+                timeline.style.display = 'block';
+                
+                timeline.innerHTML = '';
+                
+                this.lessons.forEach((lesson, index) => {
+                    const lessonCard = this.createLessonCard(lesson, index);
+                    timeline.appendChild(lessonCard);
+                });
+            }
+
+            createLessonCard(lesson, index) {
+                const card = document.createElement('div');
+                card.className = 'lesson-card';
+                
+                // Add new badge for recent lessons
+                const isNew = this.isRecentLesson(lesson.date);
+                
+                card.innerHTML = `
+                    <div class="lesson-header">
+                        <div class="lesson-duration">${lesson.duration || 'N/A'}</div>
+                        <div class="lesson-title">${lesson.lesson}</div>
+                        <div class="lesson-date">${this.formatDate(lesson.date)}</div>
+                        ${isNew ? '<div class="new-badge">NEU</div>' : ''}
+                    </div>
+                    <div class="lesson-content">
+                        <div class="topics">
+                            <h4>📚 Themen</h4>
+                            <div class="topic-tags">
+                                ${lesson.topics.map(topic => `<span class="topic-tag">${topic}</span>`).join('')}
+                            </div>
+                        </div>
+                        
+                        <div class="notes">
+                            <h4>📝 Notizen</h4>
+                            <div class="notes-content">${lesson.yourNotes || 'Keine Notizen verfügbar'}</div>
+                        </div>
+                        
+                        <div class="links">
+                            <h4>🔗 Links</h4>
+                            <ul class="link-list">
+                                ${lesson.links.map(link => `
+                                    <li class="link-item">
+                                        <a href="${link.url}" target="_blank">${link.title}</a>
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+                        
+                        <div class="progress-bar">
+                            <div class="progress-label">
+                                <span>Fortschritt</span>
+                                <span>${lesson.progress}%</span>
+                            </div>
+                            <div class="progress-fill" style="width: ${lesson.progress}%"></div>
+                        </div>
+                        
+                        ${lesson.keyInsights && lesson.keyInsights.length > 0 ? `
+                            <div class="insights">
+                                <h4>💡 Wichtige Erkenntnisse</h4>
+                                <ul class="insight-list">
+                                    ${lesson.keyInsights.map(insight => `<li class="insight-item">${insight}</li>`).join('')}
+                                </ul>
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+                
+                return card;
+            }
+
+            isRecentLesson(date) {
+                const lessonDate = new Date(date);
+                const now = new Date();
+                const diffTime = now - lessonDate;
+                const diffDays = diffTime / (1000 * 60 * 60 * 24);
+                return diffDays <= 7; // New if within 7 days
+            }
+
+            formatDate(dateString) {
+                const date = new Date(dateString);
+                return date.toLocaleDateString('de-DE', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+            }
+
+            showError(message) {
+                const loading = document.getElementById('loading');
+                const error = document.getElementById('error');
+                const timeline = document.getElementById('timeline');
+                
+                loading.style.display = 'none';
+                timeline.style.display = 'none';
+                error.style.display = 'block';
+                
+                error.querySelector('p').textContent = message;
+            }
+        }
+
+        // Initialize the explorer
+        const explorer = new FriendExplorer();
+
+        // Global function for refresh button
+        function loadLessons() {
+            explorer.loadLessons();
+        }
+
+        // Auto-refresh every 5 minutes
+        setInterval(() => {
+            explorer.loadLessons();
+        }, 5 * 60 * 1000);
+    </script>
+</body>
+</html>
