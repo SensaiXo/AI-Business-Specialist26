@@ -822,6 +822,33 @@ class AITrackerApp {
             e.preventDefault();
             this.addNote();
         });
+
+        // Add modal close listeners
+        this.setupModalCloseListeners();
+    }
+
+    // Setup modal close listeners
+    setupModalCloseListeners() {
+        const modals = ['progressModal', 'documentModal', 'noteModal'];
+        
+        modals.forEach(modalId => {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                // Close on outside click
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        this.closeModal(modalId);
+                    }
+                });
+
+                // Close on Escape key
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                        this.closeModal(modalId);
+                    }
+                });
+            }
+        });
     }
 
     // Update progress
@@ -895,6 +922,13 @@ class AITrackerApp {
         this.closeModal('noteModal');
     }
 
+    // Cancel note creation
+    cancelNote() {
+        // Clear form
+        document.getElementById('noteForm').reset();
+        this.closeModal('noteModal');
+    }
+
     // Modal functions
     openModal(modalType) {
         const modalId = modalType + 'Modal';
@@ -963,6 +997,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Global functions for HTML
     window.openModal = (modalType) => window.aiTracker.openModal(modalType);
     window.closeModal = (modalId) => window.aiTracker.closeModal(modalId);
+    window.cancelNote = () => window.aiTracker.cancelNote();
     
     // Add export/import buttons
     const actionButtons = document.querySelector('.action-buttons');
